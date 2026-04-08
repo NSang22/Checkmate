@@ -125,9 +125,7 @@ export class NotificationMessageBuilder implements INotificationMessageBuilder {
 		decision: MonitorActionDecision
 	): NotificationContent {
 		const isEscalation = decision.notificationReason === "escalation";
-		const title = isEscalation
-			? `Escalation Alert: ${monitor.name} is still down`
-			: `Monitor Down: ${monitor.name}`;
+		const title = isEscalation ? `Escalation Alert: ${monitor.name} is still down` : `Monitor Down: ${monitor.name}`;
 		const summary = isEscalation
 			? `Monitor ${monitor.name} has been down and requires escalation attention.`
 			: `Monitor "${monitor.name}" is currently down and unreachable.`;

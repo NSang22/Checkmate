@@ -781,9 +781,15 @@ const CreateMonitorPage = () => {
 								<TextField
 									type="number"
 									value={field.value ?? 0}
-									onChange={(e) => field.onChange(e.target.value === "" ? 0 : Number(e.target.value))}
-									fieldLabel={t("pages.createMonitor.form.escalation.option.afterMinutes.label")}
-									placeholder={t("pages.createMonitor.form.escalation.option.afterMinutes.placeholder")}
+									onChange={(e) =>
+										field.onChange(e.target.value === "" ? 0 : Number(e.target.value))
+									}
+									fieldLabel={t(
+										"pages.createMonitor.form.escalation.option.afterMinutes.label"
+									)}
+									placeholder={t(
+										"pages.createMonitor.form.escalation.option.afterMinutes.placeholder"
+									)}
 									fullWidth
 									error={!!fieldState.error}
 									helperText={fieldState.error?.message ?? ""}
@@ -805,27 +811,47 @@ const CreateMonitorPage = () => {
 											options={escalationNotificationOptions}
 											value={selectedNotifications}
 											getOptionLabel={(option) => option.name}
-											onChange={(_: unknown, newValue: typeof escalationNotificationOptions) => {
+											onChange={(
+												_: unknown,
+												newValue: typeof escalationNotificationOptions
+											) => {
 												field.onChange(newValue.map((n) => n.id));
 											}}
 											isOptionEqualToValue={(option, value) => option.id === value.id}
-											fieldLabel={t("pages.createMonitor.form.escalation.option.notificationIds.label")}
+											fieldLabel={t(
+												"pages.createMonitor.form.escalation.option.notificationIds.label"
+											)}
 										/>
 										{fieldState.error?.message && (
-											<Typography color="error" variant="body2">
+											<Typography
+												color="error"
+												variant="body2"
+											>
 												{fieldState.error.message}
 											</Typography>
 										)}
 										{selectedNotifications.length > 0 && (
-											<Stack flex={1} width="100%">
+											<Stack
+												flex={1}
+												width="100%"
+											>
 												{selectedNotifications.map((notification, index) => (
-													<Stack direction="row" alignItems="center" key={notification.id} width="100%">
-														<Typography flexGrow={1}>{notification.notificationName}</Typography>
+													<Stack
+														direction="row"
+														alignItems="center"
+														key={notification.id}
+														width="100%"
+													>
+														<Typography flexGrow={1}>
+															{notification.notificationName}
+														</Typography>
 														<IconButton
 															size="small"
 															onClick={() => {
 																field.onChange(
-																	(field.value ?? []).filter((id: string) => id !== notification.id)
+																	(field.value ?? []).filter(
+																		(id: string) => id !== notification.id
+																	)
 																);
 															}}
 															aria-label="Remove escalation notification"

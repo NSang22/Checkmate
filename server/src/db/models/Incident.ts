@@ -10,7 +10,6 @@ type IncidentDocumentBase = Omit<Incident, "id" | "monitorId" | "teamId" | "reso
 	createdAt: Date;
 	updatedAt: Date;
 	escalationSent: boolean;
-	
 };
 
 export interface IncidentDocument extends IncidentDocumentBase {

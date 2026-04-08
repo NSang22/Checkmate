@@ -30,7 +30,9 @@ const baseSchema = z.object({
 	escalationRules: z
 		.object({
 			afterMinutes: z.number().min(0, "Escalation threshold must be at least 0 minutes"),
-			notificationIds: z.array(z.string()).min(1, "At least one notification channel is required"),
+			notificationIds: z
+				.array(z.string())
+				.min(1, "At least one notification channel is required"),
 		})
 		.optional(),
 });
